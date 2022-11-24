@@ -7,7 +7,9 @@
 
 // *зробити функцію
 
-const arrNums = [1, 2, 3, 1, 5, 6, 1, 2, 5];
+const arrNums = [1, 2, 3, 1, 5, 6, 1, 1, 1, 1, 2, 5, 5, 5, 5, 5, 5];
+const arrNumsClone1 = arrNums.slice(0);
+const arrNumsClone2 = arrNums.slice(0);
 
 /**
  *
@@ -16,9 +18,6 @@ const arrNums = [1, 2, 3, 1, 5, 6, 1, 2, 5];
  */
 function getRepeatsNumbers(array) {
   let result = [];
-  if (array.length === 0) {
-    return result;
-  }
 
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < i; j++) {
@@ -34,6 +33,7 @@ function getRepeatsNumbers(array) {
   return result;
 }
 console.log(getRepeatsNumbers(arrNums));
+
 
 //**************************************** */
 
@@ -62,3 +62,56 @@ function getRepeatsNum2(value, index, arr) {
 const result2 = arrNums.filter(getRepeatsNum1).filter(getRepeatsNum2);
 
 console.log(result2);
+
+//*********************************************** */
+
+/**
+ * 
+ * @param {[number]} array 
+ * @returns {[number]}
+ */
+function getRepeatsNumbers3(array) {
+  let result = [];
+  array.sort();
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === undefined) break;
+    if (array[i] === array[i - 1]) {
+      if (result.includes(array[i])) {
+        array.splice(i, 1);
+      } else {
+        result.push(array[i]);
+        array.splice(i, 1);
+      }
+      i--;
+    }
+  }
+  return result;
+}
+
+console.log(getRepeatsNumbers3(arrNumsClone1));
+
+
+
+//*************************** */
+
+/**
+ * 
+ * @param {[number]} array 
+ * @returns {[number]}
+ */
+function getRepeatsNumbers4(array) {
+  let result = [];
+  array.sort();
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === undefined) break;
+    if (array[i] >= array[i + 1]) {
+      if (!result.includes(array[i]) && !result.includes(array[i + 1])) {
+        result.push(array[i]);
+      }
+    }
+  }
+  return result;
+}
+console.log(getRepeatsNumbers4(arrNumsClone2));
