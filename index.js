@@ -24,9 +24,10 @@ function getRepeatsNumbers(array) {
     for (let j = 0; j < i; j++) {
       if (array[i] === undefined) break;
       if (array[j] === array[i]) {
-        if (!result.includes(array[i])) {
-          result.push(array[i]);
+        if (result.includes(array[i])) {
+          break;
         }
+        result.push(array[i]);
       }
     }
   }
@@ -34,5 +35,30 @@ function getRepeatsNumbers(array) {
 }
 console.log(getRepeatsNumbers(arrNums));
 
+//**************************************** */
 
+/**
+ *
+ * @param {number} value
+ * @param {number} index
+ * @param {[number]} arr
+ * @returns {boolean}
+ */
+function getRepeatsNum1(value, index, arr) {
+  return arr.indexOf(value) !== index;
+}
 
+/**
+ *
+ * @param {number} value
+ * @param {number} index
+ * @param {number} arr
+ * @returns {boolean}
+ */
+function getRepeatsNum2(value, index, arr) {
+  return arr.indexOf(value) === index;
+}
+
+const result2 = arrNums.filter(getRepeatsNum1).filter(getRepeatsNum2);
+
+console.log(result2);
