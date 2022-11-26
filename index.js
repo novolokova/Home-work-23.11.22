@@ -34,7 +34,6 @@ function getRepeatsNumbers(array) {
 }
 console.log(getRepeatsNumbers(arrNums));
 
-
 //**************************************** */
 
 /**
@@ -65,15 +64,21 @@ console.log(result2);
 
 //*********************************************** */
 
+const sortArr = function (array) {
+  array.sort(function (current, next) {
+    return current < next ? -1 : 1;
+  });
+};
+
 /**
- * 
- * @param {[number]} array 
+ *
+ * @param {[number]} array
  * @returns {[number]}
  */
 function getRepeatsNumbers3(array) {
   let result = [];
-  array.sort();
-
+  sortArr(array);
+  
   for (let i = 0; i < array.length; i++) {
     if (array[i] === undefined) break;
     if (array[i] === array[i - 1]) {
@@ -91,18 +96,16 @@ function getRepeatsNumbers3(array) {
 
 console.log(getRepeatsNumbers3(arrNumsClone1));
 
-
-
 //*************************** */
 
 /**
- * 
- * @param {[number]} array 
+ *
+ * @param {[number]} array
  * @returns {[number]}
  */
 function getRepeatsNumbers4(array) {
   let result = [];
-  array.sort();
+  sortArr(array);
 
   for (let i = 0; i < array.length; i++) {
     if (array[i] === undefined) break;
