@@ -7,14 +7,14 @@
 
 // *зробити функцію
 
-const arrNums = [1, 2, 3, 1, 5, 6, 1, 1, 1, 1, 2, 5, 5, 5, 5, 5, 5];
+const arrNums = [1, 2, 3, 1, 5, 6, 1, 2, 5];
 const arrNumsClone1 = arrNums.slice(0);
 const arrNumsClone2 = arrNums.slice(0);
 
 /**
  *
  * @param {[number]} array
- * @returns {[]}
+ * @returns {[] || [number]}
  */
 function getRepeatsNumbers(array) {
   let result = [];
@@ -51,7 +51,7 @@ function getRepeatsNum1(value, index, arr) {
  *
  * @param {number} value
  * @param {number} index
- * @param {number} arr
+ * @param {[number]} arr
  * @returns {boolean}
  */
 function getRepeatsNum2(value, index, arr) {
@@ -59,7 +59,6 @@ function getRepeatsNum2(value, index, arr) {
 }
 
 const result2 = arrNums.filter(getRepeatsNum1).filter(getRepeatsNum2);
-
 console.log(result2);
 
 //*********************************************** */
@@ -78,7 +77,7 @@ const sortArr = function (array) {
 function getRepeatsNumbers3(array) {
   let result = [];
   sortArr(array);
-  
+
   for (let i = 0; i < array.length; i++) {
     if (array[i] === undefined) break;
     if (array[i] === array[i - 1]) {
@@ -109,12 +108,11 @@ function getRepeatsNumbers4(array) {
 
   for (let i = 0; i < array.length; i++) {
     if (array[i] === undefined) break;
-    if (array[i] >= array[i + 1]) {
-      if (!result.includes(array[i]) && !result.includes(array[i + 1])) {
-        result.push(array[i]);
-      }
+    if (array.indexOf(array[i]) === array.indexOf(array[i + 1])) {
+      result.push(array[i]);
     }
   }
-  return result;
+  return result.filter(getRepeatsNum2);
 }
+
 console.log(getRepeatsNumbers4(arrNumsClone2));
